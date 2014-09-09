@@ -1,8 +1,8 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="EditTextStyle" parent="android:Widget.EditText">
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
 
 </resources>

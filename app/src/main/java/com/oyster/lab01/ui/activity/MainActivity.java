@@ -10,8 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Toast;
 
 import com.oyster.lab01.R;
+import com.oyster.lab01.ui.fragment.MainFragment;
 
 
 public class MainActivity extends Activity {
@@ -27,13 +29,10 @@ public class MainActivity extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new MainFragment())
                     .commit();
         }
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,26 +46,19 @@ public class MainActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings ...", Toast.LENGTH_SHORT)
+                        .show();
+                return true;
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
+            case R.id.action_about:
+                Toast.makeText(this, "About ...", Toast.LENGTH_SHORT)
+                        .show();
+                return true;
 
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.frag_mf_layout, container, false);
-            return rootView;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

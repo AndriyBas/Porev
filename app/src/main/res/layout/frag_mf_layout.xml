@@ -12,9 +12,9 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_height="wrap_content"/>
+        android:focusableInTouchMode="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,53 +41,61 @@
 
         <EditText
             android:id="@+id/textView1"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="a0"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:hint="a0" />
 
         <EditText
             android:id="@+id/textView2"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
+
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="a1"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:hint="a1" />
 
         <EditText
             android:id="@+id/textView3"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
+
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="a2"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:hint="a2" />
 
         <EditText
             android:id="@+id/textView4"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="a3"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:hint="a3" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/frag_mf_action_button"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:background="@drawable/common_button_style"
         android:text="@string/frag_mf_action_button"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        style="?android:attr/buttonBarStyle"
-        android:background="@drawable/common_button_style"
-        />
+        android:textColor="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="4dp">
 
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
