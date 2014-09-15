@@ -39,39 +39,98 @@
         android:orientation="horizontal"
         android:padding="2dp">
 
-        <EditText
-            android:id="@+id/textView1"
-            style="@style/EditTextStyle"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="a0" />
+            >
 
-        <EditText
-            android:id="@+id/textView2"
-            style="@style/EditTextStyle"
-            android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="a0 : "
+                />
 
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="a1" />
+            <EditText
+                android:id="@+id/textView0"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="a0"
+                android:text="1"
+                />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/textView3"
-            style="@style/EditTextStyle"
-            android:layout_width="0dp"
-
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="a2" />
-
-        <EditText
-            android:id="@+id/textView4"
-            style="@style/EditTextStyle"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="a3" />
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="a1 : "
+                />
+
+            <EditText
+                android:id="@+id/textView1"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="a1"
+                android:text="2"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="a2 : "
+                />
+
+            <EditText
+                android:id="@+id/textView2"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="a2"
+                android:text="3"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="a3 : "
+                />
+
+            <EditText
+                android:id="@+id/textView3"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="a0"
+                android:text="4"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
 
@@ -82,6 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:background="@drawable/common_button_style"
+        android:enabled="false"
         android:text="@string/frag_mf_action_button"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
@@ -92,10 +152,13 @@
         android:layout_marginTop="4dp">
 
 
-        <GridView
-            android:id="@+id/gridView"
+        <TableLayout
+            android:id="@+id/frag_mf_table_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+        </TableLayout>
 
     </LinearLayout>
 
