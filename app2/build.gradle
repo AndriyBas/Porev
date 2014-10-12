@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'android-L'
+    compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "com.oyster.lab02"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
@@ -26,4 +26,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.jakewharton:butterknife:5.1.2'
+
+
+    compile group: 'com.googlecode.efficient-java-matrix-library', name: 'core', version: '0.26'
+    compile group: 'com.googlecode.efficient-java-matrix-library', name: 'equation', version: '0.26'
 }
