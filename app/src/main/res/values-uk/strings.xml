@@ -2,5 +2,9 @@
 <resources>
 
     <string name="act_ma_title">Лабораторна робота № 1</string>
+    <string name="action_settings">Налаштування</string>
+    <string name="frag_mf_a0123_hint">Введіть значення :</string>
+    <string name="frag_mf_action_button">Генерувати</string>
+    <string name="action_about">Про програму</string>
 
 </resources>
