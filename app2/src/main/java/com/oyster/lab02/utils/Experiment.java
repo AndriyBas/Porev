@@ -13,8 +13,16 @@ import java.util.Random;
  */
 public class Experiment {
 
+    public final int N;
+    public final double yMin = 190;
+    public final double yMax = 290;
+    public final int minM = 5; // min M
     final Random rand = new Random();
 
+    //    false double x1min = -10;
+//    final double x1max = 50;
+//    final double x2min = 20;
+//    final double x2max = 60;
     final int[] romik_m = new int[]{
             4, 6, 8, 10, 12, 15, 20
     };
@@ -22,31 +30,15 @@ public class Experiment {
     final double[] romik = new double[]{
             1.71, 2.10, 2.27, 2.41, 2.52, 2.64, 2.78
     };
-
-    final int N;
-
-//    false double x1min = -10;
-//    final double x1max = 50;
-//    final double x2min = 20;
-//    final double x2max = 60;
-
-    final double yMin = 190;
-    final double yMax = 290;
-
-    final int minM = 5; // min M
     final int K;
-
-
-    List<Pair<Double, Double>> xMinMax;
-
-    List<List<Double>> x = new ArrayList<>();
-    List<List<Double>> y = new ArrayList<>();
-
-    List<Double> yNSum = new ArrayList<>();
-    List<Double> yNAvg = new ArrayList<>();
-
-    List<Double> sigmaN = new ArrayList<>();
-    List<List<Double>> Fnn = new ArrayList<>();
+    public List<Pair<Double, Double>> xMinMax;
+    public List<List<Double>> x = new ArrayList<>();
+    public List<List<Double>> y = new ArrayList<>();
+    public List<Double> yNSum = new ArrayList<>();
+    public List<Double> yNAvg = new ArrayList<>();
+    public List<Double> sigmaN = new ArrayList<>();
+    public List<List<Double>> Fnn = new ArrayList<>();
+    public SimpleMatrix res;
 
     public Experiment(List<Pair<Double, Double>> xMinMax) {
         this.xMinMax = xMinMax;
@@ -91,6 +83,26 @@ public class Experiment {
 
     }
 
+    public int getN() {
+        return N;
+    }
+
+    public int getK() {
+        return K;
+    }
+
+    public SimpleMatrix getNormCoefficients() {
+        return res;
+    }
+
+    public List<List<Double>> getY() {
+        return y;
+    }
+
+    public List<List<Double>> getX() {
+        return x;
+    }
+
     private void runExperiment() {
         List<Double> yi = new ArrayList<>();
 
@@ -119,10 +131,9 @@ public class Experiment {
 
         double sigmaMainDiff = Math.sqrt(2.0 * (2.0 * m - 2.0) / (m * (m - 4.0)));
 
-        double Rkr = romik[0];
         int ii = 0;
         while (ii < romik.length && romik_m[ii] < y.size()) ii++;
-        Rkr = romik[ii];
+        double Rkr = romik[ii];
 
         // TODO : can optimize here, run only half of matrix
         for (int i = 0; i < N; i++) {
@@ -150,6 +161,25 @@ public class Experiment {
         }
 
         return true;
+    }
+
+    public double Gp() {
+        double maxS = Double.MIN_VALUE;
+        double sumS = 0.0;
+
+        double m = y.size();
+        for (int i = 0; i < N; i++) {
+
+            double t = 0.0;
+            for (int j = 0; j < y.size(); j++)
+                t += Math.pow(y.get(j).get(i) - yNAvg.get(i), 2.0);
+            if (t > maxS)
+                maxS = t;
+            sumS += t;
+            sigmaN.set(i, t / m);
+        }
+
+        return maxS / sumS;
     }
 
     private void calculateCoefficients() {
@@ -182,9 +212,13 @@ public class Experiment {
         SimpleMatrix ATA_1AT = ATA_1.mult(AT);
 
         SimpleMatrix Y = new SimpleMatrix(newY);
-        SimpleMatrix res = ATA_1AT.mult(Y);
 
-        int s = 1;
+        res = ATA_1AT.mult(Y);
+    }
+
+    public SimpleMatrix getNaturalCoefficients() {
+
+        return res;
     }
 
 

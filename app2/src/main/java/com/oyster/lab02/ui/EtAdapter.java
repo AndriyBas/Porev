@@ -3,11 +3,13 @@ package com.oyster.lab02.ui;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.oyster.lab02.R;
 
@@ -22,6 +24,7 @@ public class EtAdapter extends ArrayAdapter<Integer> {
     final LayoutInflater mInflater;
     List<List<Double>> x;
 
+
     public EtAdapter(Context context, List<Integer> objects) {
         super(context, 0, objects);
         mInflater = LayoutInflater.from(context);
@@ -30,14 +33,21 @@ public class EtAdapter extends ArrayAdapter<Integer> {
 
         for (int i = 0; i < objects.size(); i++) {
             List<Double> a = new ArrayList<>(2);
-            a.add(0.0);
-            a.add(0.0);
+            a.add(25.0);
+            a.add(75.0);
             x.add(a);
         }
     }
 
-    public List<List<Double>> getX() {
-        return x;
+    public List<Pair<Double, Double>> getX() {
+
+        List<Pair<Double, Double>> xMinMax = new ArrayList<>();
+
+        for (List<Double> l : x) {
+            xMinMax.add(new Pair<Double, Double>(l.get(0), l.get(1)));
+        }
+
+        return xMinMax;
     }
 
     @Override
@@ -60,7 +70,13 @@ public class EtAdapter extends ArrayAdapter<Integer> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                x.get(position).set(0, Double.parseDouble(s.toString().trim()));
+                double val = 0.0;
+                try {
+                    val = Double.parseDouble(s.toString().trim());
+                } catch (Exception e) {
+                }
+
+                x.get(position).set(0, val);
             }
 
             @Override
@@ -70,7 +86,6 @@ public class EtAdapter extends ArrayAdapter<Integer> {
         });
 
         EditText etMax = (EditText) convertView.findViewById(R.id.et_max);
-
         etMax.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -79,7 +94,13 @@ public class EtAdapter extends ArrayAdapter<Integer> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                x.get(position).set(1, Double.parseDouble(s.toString().trim()));
+                double val = 0.0;
+                try {
+                    val = Double.parseDouble(s.toString().trim());
+                } catch (Exception e) {
+                }
+
+                x.get(position).set(1, val);
             }
 
             @Override
@@ -89,13 +110,10 @@ public class EtAdapter extends ArrayAdapter<Integer> {
         });
 
 
-        if (etMin.getText().toString().trim().length() == 0) {
-            etMin.setHint("x_" + String.valueOf(p) + " min");
-        }
-
-        if (etMax.getText().toString().trim().length() == 0) {
-            etMax.setHint("x_" + String.valueOf(p) + " max");
-        }
+        TextView tvMin = (TextView) convertView.findViewById(R.id.tv_min);
+        TextView tvMax = (TextView) convertView.findViewById(R.id.tv_max);
+        tvMin.setText("x" + String.valueOf(p) + " min");
+        tvMax.setText("x" + String.valueOf(p) + " max");
 
         return convertView;
     }

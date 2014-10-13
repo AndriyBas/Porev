@@ -6,20 +6,38 @@
     android:orientation="horizontal"
     android:padding="4dp">
 
+    <TextView
+        android:id="@+id/tv_min"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="x1 min" />
+
     <EditText
         android:id="@+id/et_min"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
+        android:layout_weight="4"
         android:inputType="numberDecimal"
-        android:layout_weight="1" />
+        android:text="25.0" />
+
+    <TextView
+        android:id="@+id/tv_max"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="x1 max" />
 
     <EditText
         android:id="@+id/et_max"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
         android:layout_margin="6dp"
-        android:layout_weight="1" />
+        android:layout_weight="4"
+        android:inputType="numberDecimal"
+        android:text="75.0" />
 
 </LinearLayout>
