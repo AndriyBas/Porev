@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:layout_weight="4"
-        android:inputType="numberDecimal"
+        android:inputType="numberDecimal|numberSigned"
         android:text="25.0" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:layout_weight="4"
-        android:inputType="numberDecimal"
+        android:inputType="numberDecimal|numberSigned"
         android:text="75.0" />
 
 </LinearLayout>

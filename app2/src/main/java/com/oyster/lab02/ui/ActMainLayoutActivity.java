@@ -71,6 +71,9 @@ public class ActMainLayoutActivity extends Activity {
         @InjectView(R.id.eq_two)
         TextView mEqTwo;
 
+        @InjectView(R.id.fisher)
+        TextView mFisher;
+
         boolean DEBUG_MODE = true;
 
 
@@ -141,6 +144,7 @@ public class ActMainLayoutActivity extends Activity {
             } catch (Exception ex) {
                 Toast.makeText(getActivity(), "WTF ??? ", Toast.LENGTH_SHORT)
                         .show();
+                ex.printStackTrace();
             }
         }
 
@@ -224,6 +228,9 @@ public class ActMainLayoutActivity extends Activity {
                 twoRes.append(String.format("  +  %.3f * x%d", nsm.get(i, 0), i));
             }
             mEqTwo.setText(twoRes.toString());
+
+            mFisher.setText("" + ex.fisher());
+
 
 
         }

@@ -16,9 +16,6 @@ import com.oyster.lab02.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by andriybas on 10/12/14.
- */
 public class EtAdapter extends ArrayAdapter<Integer> {
 
     final LayoutInflater mInflater;
